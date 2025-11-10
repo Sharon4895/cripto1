@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Usamos la misma clase 'login-container' para reutilizar el estilo.
+          No es necesario cambiarle el nombre.
+        */
+        .login-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+
+        /* Usamos la misma clase 'login-button' para el botón de registro.
+        */
+        .login-button {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745; /* Color verde para registro */
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #218838; /* Verde más oscuro */
+        }
+
+        /* Usamos la misma clase 'create-account' para el enlace de "ya tengo cuenta".
+        */
+        .create-account {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .create-account a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .create-account a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        
+        <form action="procesar_registro.php" method="POST">
+            
+            <h2>Crear Cuenta</h2>
+            
+            <div class="input-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="apellido1">Primer Apellido</label>
+                <input type="text" id="apellido1" name="apellido1" required>
+            </div>
+
+            <div class="input-group">
+                <label for="apellido2">Segundo Apellido (Opcional)</label>
+                <input type="text" id="apellido2" name="apellido2">
+            </div>
+
+            <div class="input-group">
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" id="correo" name="correo" required>
+            </div>
+
+            <div class="input-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena" required>
+            </div>
+
+            <div class="input-group">
+                <label for="confirmar_contrasena">Confirmar Contraseña</label>
+                <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required>
+            </div>
+            
+            <button type="submit" class="login-button">Crear Cuenta</button>
+            
+        </form>
+
+        <div class="create-account">
+            <p>¿Ya tienes una cuenta? <a href="index.html">Inicia Sesión</a></p>
+        </div>
+        
+    </div>
+
+    <script>
+        // Script para mostrar un mensaje si el registro fue exitoso
+        const urlParams = new URLSearchParams(window.location.search);
+        const mensaje = urlParams.get('mensaje');
+        if (mensaje) {
+            alert(mensaje);
+        }
+    </script>
+
+</body>
+</html>
