@@ -96,29 +96,69 @@
 <body>
 
     <div class="login-container">
-        
-        <form action="/procesar_login" method="POST">
-            
+
+        <form id="login-form" action="procesar_login.php" method="POST">
+
             <h2>Iniciar Sesión</h2>
-            
+
             <div class="input-group">
-                <label for="usuario">Usuario:</label>
-                <input type="text" id="usuario" name="usuario" required>
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
             </div>
-            
+
             <div class="input-group">
                 <label for="contrasena">Contraseña:</label>
                 <input type="password" id="contrasena" name="contrasena" required>
             </div>
-            
-            <button type="submit" class="login-button" href="inicio.html">Entrar</button>
-            
+
+            <button type="submit" class="login-button">Entrar</button>
+            <div id="login-error" aria-live="polite" style="color:#c82333; margin-top:10px; display:none;"></div>
+
         </form>
-        
+
         <div class="create-account">
             <p>¿No tienes una cuenta? <a href="registrarse.html">Regístrate aquí</a></p>
         </div>
-        </div>
 
-</body>
-</html>
+    </div>
+
+    <script>
+        // Mostrar mensajes de error o éxito si vienen en la URL (fallback)
+        (function (){
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const mensaje = urlParams.get('mensaje');
+            const errDiv = document.getElementById('login-error');
+
+            if (error) {
+                if (errDiv) {
+                    // Limpiar y mostrar mensaje con enlace de recuperación
+                    errDiv.innerHTML = '';
+                    const span = document.createElement('span');
+                    span.textContent = error + ' ';
+                    errDiv.appendChild(span);
+                    const a = document.createElement('a');
+                    a.href = 'recuperar_contrasena.html';
+                    a.textContent = 'Recuperar contraseña';
+                    a.style.color = '#0056b3';
+                    a.style.fontWeight = 'bold';
+                    a.style.marginLeft = '6px';
+                    errDiv.appendChild(a);
+                    errDiv.style.display = 'block';
+                } else {
+                    alert(error);
+                }
+            }
+
+            if (mensaje) {
+                // Mostrar mensaje de éxito (simple alert como fallback)
+                alert(mensaje);
+            }
+        })();
+    </script>
+
+    <!-- Cargar el manejador JS para login (intercepta y usa AJAX) -->
+    <script src="js/login.js"></script>
+
+    </body>
+    </html>

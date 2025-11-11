@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Recuperar Contraseña</title>
+    <style>
+        body { font-family: Arial, sans-serif; background:#f0f2f5; display:grid; place-items:center; min-height:100vh; margin:0 }
+        .card { background:#fff; padding:2rem; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.08); width:320px; }
+        .btn { display:inline-block; padding:.6rem 1rem; background:#007bff; color:#fff; border-radius:4px; text-decoration:none; border:none }
+        .input { width:100%; padding:.6rem; margin-bottom:1rem; border:1px solid #ddd; border-radius:4px }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Recuperar Contraseña</h2>
+        <p>Introduce tu correo y te enviaremos instrucciones para restablecer tu contraseña.</p>
+        <form action="procesar_recuperar.php" method="POST">
+            <input class="input" type="email" name="correo" placeholder="tu@ejemplo.com" required>
+            <button class="btn" type="submit">Enviar instrucciones</button>
+        </form>
+        <p style="margin-top:1rem"><a href="index.html">Volver al login</a></p>
+    </div>
+</body>
+</html>

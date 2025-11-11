@@ -5,8 +5,8 @@ session_start();
 // 2. Verificar si el usuario está logueado
 // Si 'user_id' no existe en la sesión, significa que no ha iniciado sesión.
 if (!isset($_SESSION['user_id'])) {
-    // 3. Redirigir al login
-    header("Location: login.html");
+    // 3. Redirigir al login (archivo de login es index.html)
+    header("Location: index.html");
     exit; // Asegurarse de que el script se detenga después de redirigir
 }
 
@@ -82,6 +82,5 @@ $nombre_usuario = $_SESSION['nombre'];
         
         <a href="logout.php" class="logout-button">Cerrar Sesión</a>
     </div>
-
 </body>
 </html>
